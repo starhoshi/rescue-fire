@@ -22,6 +22,10 @@ rescue-fire can only create `functions.Event <DeltaDocumentSnapshot>`. But this 
 
 Let's write a Cloud Functions test with this event.
 
+## Note
+
+The event created by rescue-fire is not complete. We think that it is enough to write tests, but keep in mind that it is different from the actual event.
+
 ## Installation
 
 ```
