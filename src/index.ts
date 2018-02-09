@@ -3,6 +3,16 @@ import * as functions from 'firebase-functions'
 import { DeltaDocumentSnapshot } from 'firebase-functions/lib/providers/firestore'
 
 /**
+ * Cloud Functions's event type
+ */
+export enum EventType {
+  Create = 'create',
+  Update = 'update',
+  Write = 'write',
+  Delete = 'delete'
+}
+
+/**
  * event options
  */
 export interface Options {
@@ -19,7 +29,7 @@ export interface Options {
   /**
    * event.eventType
    */
-  eventType?: 'create' | 'write' | 'update' | 'delete'
+  eventType?: EventType
 
   /**
    * event.resource
@@ -35,12 +45,27 @@ export interface Options {
  */
 export const event = (ref: FirebaseFirestore.DocumentReference, data: any, options?: Options) => {
   const now = new Date()
-  let eventType = 'create'
+  let eventType = EventType.Update
   let previousData: any | undefined = undefined
+  let previous: {[key: string]: any} | undefined = { data: () => { return previousData } }
   let params: { [key: string]: string } | undefined = undefined
   let resource: string | undefined = 'resource'
+  let exists = true
   if (options) {
-    eventType = options.eventType || 'create'
+    if (options.eventType) {
+      eventType = options.eventType
+      switch (options.eventType) {
+        case EventType.Create:
+          previous = undefined
+          break
+        case EventType.Delete:
+          exists = false
+          break
+        default:
+        // nothing to do
+      }
+    }
+
     previousData = options.previousData
     params = options.params
     resource = options.resource
@@ -53,13 +78,13 @@ export const event = (ref: FirebaseFirestore.DocumentReference, data: any, optio
     resource: resource,
     params: params,
     data: {
-      exists: true,
+      exists: exists,
       ref: ref,
       id: ref.id,
       createTime: now.toISOString(),
       updateTime: now.toISOString(),
       readTime: undefined as any,
-      previous: { data: () => { return previousData } },
+      previous: previous,
       data: () => { return data },
       get: (key: string) => { return undefined }
     }
