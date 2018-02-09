@@ -41,7 +41,7 @@ Download the service account key json file.
 
 [https://firebase.google.com/docs/admin/setup?authuser=0#add_firebase_to_your_app](https://firebase.google.com/docs/admin/setup?authuser=0#add_firebase_to_your_app)
 
-And this json is sensitive, be careful.
+This json file is sensitive, be careful.
 
 > Important: This file contains sensitive information, including your service account's private encryption key. Keep it confidential and never store it in a public repository.
 
