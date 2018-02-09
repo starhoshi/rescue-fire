@@ -1,5 +1,14 @@
 import * as functions from 'firebase-functions';
 /**
+ * Cloud Functions's event type
+ */
+export declare enum EventType {
+    Create = "create",
+    Update = "update",
+    Write = "write",
+    Delete = "delete",
+}
+/**
  * event options
  */
 export interface Options {
@@ -16,7 +25,7 @@ export interface Options {
     /**
      * event.eventType
      */
-    eventType?: 'create' | 'write' | 'update' | 'delete';
+    eventType?: EventType;
     /**
      * event.resource
      */

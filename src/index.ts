@@ -45,9 +45,9 @@ export interface Options {
  */
 export const event = (ref: FirebaseFirestore.DocumentReference, data: any, options?: Options) => {
   const now = new Date()
-  let eventType = EventType.Update
+  let eventType = EventType.Write
   let previousData: any | undefined = undefined
-  let previous: {[key: string]: any} | undefined = { data: () => { return previousData } }
+  let previous: { [key: string]: any } | undefined = undefined
   let params: { [key: string]: string } | undefined = undefined
   let resource: string | undefined = 'resource'
   let exists = true
@@ -62,11 +62,13 @@ export const event = (ref: FirebaseFirestore.DocumentReference, data: any, optio
           exists = false
           break
         default:
-        // nothing to do
+          // nothing to do
+          break
       }
     }
 
     previousData = options.previousData
+    previous = { data: () => { return previousData } }
     params = options.params
     resource = options.resource
   }

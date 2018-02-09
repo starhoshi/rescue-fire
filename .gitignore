@@ -99,4 +99,5 @@ sample-cloud-functions/functions/out
 # Test
 out/__tests__
 .envrc
+coverage
 
