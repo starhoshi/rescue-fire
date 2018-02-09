@@ -39,11 +39,13 @@ export interface Options {
 
 /**
  * Create a roughly similar event to Cloud Functions.
+ * [Interface: Event  \|  Firebase](https://firebase.google.com/docs/reference/functions/functions.Event)
+ *
  * @param ref DocumentReference: event.data.ref
  * @param data Document Data: event.data.data()
  * @param options Options
  */
-export const event = (ref: FirebaseFirestore.DocumentReference, data: any, options?: Options) => {
+export const event = (ref: FirebaseFirestore.DocumentReference, data: any, options?: Options): functions.Event<DeltaDocumentSnapshot> => {
   const now = new Date()
   let eventType = EventType.Write
   let previousData: any | undefined = undefined
@@ -51,7 +53,13 @@ export const event = (ref: FirebaseFirestore.DocumentReference, data: any, optio
   let params: { [key: string]: string } | undefined = undefined
   let resource: string | undefined = 'resource'
   let exists = true
+
   if (options) {
+    previousData = options.previousData
+    previous = { data: () => { return previousData } }
+    params = options.params
+    resource = options.resource
+
     if (options.eventType) {
       eventType = options.eventType
       switch (options.eventType) {
@@ -66,11 +74,6 @@ export const event = (ref: FirebaseFirestore.DocumentReference, data: any, optio
           break
       }
     }
-
-    previousData = options.previousData
-    previous = { data: () => { return previousData } }
-    params = options.params
-    resource = options.resource
   }
 
   return <functions.Event<DeltaDocumentSnapshot>>{

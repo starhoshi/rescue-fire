@@ -12,6 +12,8 @@ var EventType;
 })(EventType = exports.EventType || (exports.EventType = {}));
 /**
  * Create a roughly similar event to Cloud Functions.
+ * [Interface: Event  \|  Firebase](https://firebase.google.com/docs/reference/functions/functions.Event)
+ *
  * @param ref DocumentReference: event.data.ref
  * @param data Document Data: event.data.data()
  * @param options Options
@@ -25,6 +27,10 @@ exports.event = (ref, data, options) => {
     let resource = 'resource';
     let exists = true;
     if (options) {
+        previousData = options.previousData;
+        previous = { data: () => { return previousData; } };
+        params = options.params;
+        resource = options.resource;
         if (options.eventType) {
             eventType = options.eventType;
             switch (options.eventType) {
@@ -39,10 +45,6 @@ exports.event = (ref, data, options) => {
                     break;
             }
         }
-        previousData = options.previousData;
-        previous = { data: () => { return previousData; } };
-        params = options.params;
-        resource = options.resource;
     }
     return {
         eventId: Math.random().toString(36).slice(-10),

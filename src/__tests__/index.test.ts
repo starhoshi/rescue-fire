@@ -82,7 +82,7 @@ describe('EventType.Create', () => {
 
 describe('EventType.Delete', () => {
   let event: functions.Event<DeltaDocumentSnapshot>
-  const data = { name: 'hoge' }
+  const data = undefined
   const previousData = { name: 'pre'}
   const params = { userID: '1' }
   const eventType = Rescue.EventType.Delete

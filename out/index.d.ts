@@ -33,6 +33,8 @@ export interface Options {
 }
 /**
  * Create a roughly similar event to Cloud Functions.
+ * [Interface: Event  \|  Firebase](https://firebase.google.com/docs/reference/functions/functions.Event)
+ *
  * @param ref DocumentReference: event.data.ref
  * @param data Document Data: event.data.data()
  * @param options Options
