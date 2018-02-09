@@ -13,7 +13,7 @@ Let's emulate functions locally with rescue-fire and do TDD.
 * [ ] Pub/Sub
 * [ ] Strage
 
-## 概要
+## Concept
 
 rescue-fire can only create `functions.Event <DeltaDocumentSnapshot>`. But this is enough to simulate Cloud Functions.
 
