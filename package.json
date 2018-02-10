@@ -1,6 +1,6 @@
 {
   "name": "rescue-fire",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A test helper for Cloud Functions",
   "main": "out/index.js",
   "types": "out/index.d.ts",
