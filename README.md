@@ -75,6 +75,7 @@ The test will be like this.
 import 'jest'
 import * as admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
+import * as Rescue from 'rescue-fire'
 
 // Set up to run firebase in local.
 beforeAll(() => {
