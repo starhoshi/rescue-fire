@@ -4,7 +4,10 @@
 
 # rescue-fire
 
+[![npm version](https://badge.fury.io/js/rescue-fire.svg)](https://badge.fury.io/js/rescue-fire)
 [![Build Status](https://travis-ci.org/starhoshi/rescue-fire.svg?branch=master)](https://travis-ci.org/starhoshi/rescue-fire)
+[![Coverage Status](https://coveralls.io/repos/github/starhoshi/rescue-fire/badge.svg?branch=master)](https://coveralls.io/github/starhoshi/rescue-fire?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The deployment of Cloud Functions is very slow. Deployment is normally completed in 30 seconds, but it can take more than 10 minutes. It is a waste of time to wait a few minutes just by rewriting one line.
 
