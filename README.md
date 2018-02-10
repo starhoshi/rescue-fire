@@ -6,7 +6,7 @@
 
 The deployment of Cloud Functions is very slow. Deployment is normally completed in 30 seconds, but it can take more than 10 minutes. It is a waste of time to wait a few minutes just by rewriting one line.
 
-[Cloud Functions Emulator](https://firebase.google.com/docs/functions/local-emulator) is veru useful. However, it is hard to create the test data json, and it is not possible to write tests.
+[Cloud Functions Emulator](https://firebase.google.com/docs/functions/local-emulator) is very useful. However, it is hard to create the test data json, and it is not possible to write tests.
 
 Let's emulate functions locally with rescue-fire and do TDD.
 
