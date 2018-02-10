@@ -39,5 +39,16 @@
     "ts-jest": "^22.0.3",
     "tslint": "^5.9.1",
     "typescript": "^2.7.1"
+  },
+  "jest": {
+    "transform": {
+      "\\.ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "__tests__/.*.test.ts",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ]
   }
 }
