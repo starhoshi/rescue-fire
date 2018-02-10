@@ -1,6 +1,6 @@
 # rescue-fire
 
-The deployment of Cloud Functions is very slow. It can take as fast as 30 seconds, somehow 10 minutes. It is a waste of time to wait a few minutes just by rewriting one line.
+The deployment of Cloud Functions is very slow. Deployment is normally completed in 30 seconds, but it can take more than 10 minutes. It is a waste of time to wait a few minutes just by rewriting one line.
 
 Let's emulate functions locally with rescue-fire and do TDD.
 
