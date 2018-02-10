@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@types/jest": "^22.1.1",
+    "coveralls": "^3.0.0",
     "firebase-tools": "^3.17.4",
     "jest": "^22.2.1",
     "ts-jest": "^22.0.3",
