@@ -10,7 +10,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d78ab5f70d834668af4afa66421fe1ed)](https://www.codacy.com/app/kensuke1751/rescue-fire?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=starhoshi/rescue-fire&amp;utm_campaign=Badge_Grade)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The deployment of Cloud Functions is very slow. Deployment is normally completed in 30 seconds, but it can take more than 10 minutes. It is a waste of time to wait a few minutes just by rewriting one line.
+The deployment of Cloud Functions is very slow. Deployment is normally completed in 30 seconds, but it sometimes take more than 10 minutes. It is a waste of time to wait a few minutes just by rewriting one line.
 
 [Cloud Functions Emulator](https://firebase.google.com/docs/functions/local-emulator) is very useful. However, it is hard to create the test data json, and it is not possible to write tests.
 
