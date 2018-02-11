@@ -5,3 +5,5 @@ dist: trusty
 sudo: false
 cache: yarn
 script: yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+notifications:
+  email: false
