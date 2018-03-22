@@ -1,6 +1,5 @@
 import * as admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
-import { DeltaDocumentSnapshot } from 'firebase-functions/lib/providers/firestore'
 
 /**
  * Cloud Functions's event type
@@ -45,7 +44,7 @@ export interface Options {
  * @param data Document Data: event.data.data()
  * @param options Options
  */
-export const event = (ref: FirebaseFirestore.DocumentReference, data: any, options?: Options): functions.Event<DeltaDocumentSnapshot> => {
+export const event = (ref: FirebaseFirestore.DocumentReference, data: any, options?: Options): functions.Event<functions.firestore.DeltaDocumentSnapshot> => {
   const now = new Date()
   let eventType = EventType.Write
   let previousData: any | undefined = undefined
@@ -76,7 +75,7 @@ export const event = (ref: FirebaseFirestore.DocumentReference, data: any, optio
     }
   }
 
-  return <functions.Event<DeltaDocumentSnapshot>>{
+  return <functions.Event<functions.firestore.DeltaDocumentSnapshot>>{
     eventId: Math.random().toString(36).slice(-10),
     timestamp: now.toISOString(),
     eventType: `providers/cloud.firestore/eventTypes/document.${eventType}`,
@@ -89,7 +88,7 @@ export const event = (ref: FirebaseFirestore.DocumentReference, data: any, optio
       createTime: now.toISOString(),
       updateTime: now.toISOString(),
       readTime: undefined as any,
-      previous: previous,
+      previous: previous as any,
       data: () => { return data },
       get: (key: string) => { return undefined }
     }
